@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Portal | Student</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- stylesheet link -->
+    <link rel="stylesheet" href="../static/css/styleStudent.css">
+</head>
+
+<body>
+    <div class="container-fluid" id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand" href="./">Exam Portal</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="./about">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="./team">Our Team</a></li>
+              <li class="nav-item"><a class="nav-link" href="./contact">Contact Us</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+    <div id="alert"></div>
+    <div id="studentPage" class="studentPage row">
+        <div id="test">
+            <div class="testSection my-4" id="upcomingTests">
+                <h6>Upcoming tests</h6>
+                <div id='upcomingTestsPanel' class="row scrollable">
+                    <% if(upcomingTests.length>0){ %>
+                        <% Array.from(upcomingTests).forEach((test,index)=>{ %>
+                            <div class="my-1 col-sm-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= test.testName%></h5>
+                                        <p class="card-text">
+                                            <%= test.dateTime.toString().slice(0,28) %>
+                                            Duration : <%= test.testDuration %> min
+                                        </p>
+                                        <a id=<%= index%> onclick="return checkTest('<%= test.dateTime%>', '<%=test.testDuration%>')" href="/test?testName=<%=test.testName%>&department=<%=test.department%>&dateTime=<%=test.dateTime%>&testDuration=<%=((test.dateTime)-((new Date())-test.testDuration*60000))%>" class="startBtn btn btn-primary">Start test</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% })%>
+                    <% }else{ %>
+                        <h6 style="margin: 10px 10px;">
+                            No upcoming tests
+                        </h6>
+                    <% } %>
+                </div>      
+            </div>
+
+            <div class="testSection my-4" id="expiredTests">
+                <h6>Expired tests</h6>
+                <div id='expiredTestsPanel' class="row scrollable">
+                <% if(expiredTests.length>0){ %>
+                    <% Array.from(expiredTests).forEach((test)=>{ %>
+                        <div class="my-1 col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= test.test.testName%></h5>
+                                    <p class="card-text">
+                                        <%= test.test.dateTime.toString().slice(0,28) %>
+                                        Duration : <%= test.test.testDuration %> min
+                                    </p>
+                                    <% if(test.marks == -1){ %>
+                                        <h6>Not attempted</h6>
+                                    <% }else{ %>
+                                        <h6>Marks scored : <%= test.marks %>/10</h6>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% })%>
+                <% }else{ %>
+                    <h6 style="margin: 10px 10px;">
+                        No expired tests
+                    </h6>
+                <% } %>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h3 id="greetStudent" class="my-2">Hello, <%= name %></h3>
+            <div class="myBtn">
+                <a href="./" id="logoutBtn" class="btn btn-primary">LOGOUT</a>
+            </div>
+        </div>
+        <footer id="footer">Copyright &copy; Exam Portal 2020-21 | All rights reserved</footer>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="../static/js/student.js"></script>
+    <script>
+        sessionStorage.setItem("studentId","<%- studentId%>");
+        sessionStorage.setItem("password","<%- password%>");
+        sessionStorage.setItem("department","<%- department%>");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#navbar{
+    background-color: #194350;
+    z-index: 1;
+  }
+  
+  .navbar-dark .navbar-brand {
+    color: #ffc2b4;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    color: #ffc2b4;
+  }
+  
+  
+  .navbar-brand{
+    font-family: 'Ubuntu';
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-item{
+    padding: 0 18px;
+  }
+.btn-primary {
+    color: #000;
+    background-color: #ffc2b4;
+    border-color: #ffc2b4;
+}
+  
+.btn-primary:hover {
+color: #000;
+background-color: #ff8882;
+border-color: #ff8882;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+color: #000;
+background-color: #ff8882;
+border-color: #ff8882;
+box-shadow: 0 0 0 0.2rem #ff8882;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+color: #000;
+background-color: #ffc2b4;
+border-color: #ffc2b4;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+color: #000;
+background-color: #ff8882;
+border-color: #ff8882;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+box-shadow: 0 0 0 0.2rem #ff8882;
+}
+
+.myBtn{
+    height: 65px;
+    width: 280px;
+    font-size: 25px;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ff8882;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #ffc2b4;
+}
+.form-select:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ff8882;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #ffc2b4;
+}
+
+
+/* .formSection{
+    border: 1px solid #194350;
+    border-radius: 15px;
+    padding: 10px 20px;
+} */
+.choiceSection{
+    height: 500px;
+    padding: 30% 0 15% 2%;
+    margin: auto 10px;
+}
+h2{
+    margin-left: 60px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+h4{
+    margin-bottom: 15px;
+    text-align: center;
+}
+.formBtn{
+    text-align: center;
+    padding-top: 5px;
+}
+
+/* input[type='datetime-local']::marker{
+  background-color: rebeccapurple;
+} */
+
+/* input[type='radio']:{
+  background-color: red;
+} */
+
+.form-check-input:checked{
+  background-color: #ff8882;
+  border-color: #ff8882;
+}
+
+input::-webkit-datetime-edit-day-field:focus,
+input::-webkit-datetime-edit-month-field:focus,
+input::-webkit-datetime-edit-year-field:focus,
+input::-webkit-datetime-edit-day-field:hover {
+    background-color: #ff8882;
+    color: white;
+    outline: none;
+}
+.ui-datepicker {
+  background: #333;
+  border: 1px solid #555;
+  color: #EEE;
+}
+#footer{
+    height: fit-content;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+  }

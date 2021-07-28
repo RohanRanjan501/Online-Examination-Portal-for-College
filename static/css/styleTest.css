@@ -1,0 +1,41 @@
+body{
+  background-color: #ff8882;
+  font-family: 'Montserrat';
+
+}
+
+h2{font-weight: bold;
+}
+
+.row{
+  margin: 0;
+}
+
+.option-row{
+  margin: 20px 0;
+}
+
+.top{
+  background-color: #194350;
+  color: #ff8882;
+}
+
+.alignRight{
+  text-align: right;
+}
+
+.container-fluid{
+  padding:15px 0;
+  border-radius: 0 0 25px 25px;
+}
+
+.question-container{
+  padding: 7% 3%;
+  width: 80%;
+  margin-top: 2%;
+  background-color:white;
+  z-index: -1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 25px;
+  text-align: left;
+}

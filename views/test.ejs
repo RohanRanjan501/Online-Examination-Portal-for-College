@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+
+  <!-- bootstrap.css link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+  <!-- stylesheet link -->
+  <link rel="stylesheet" href="../static/css/styleTest.css">
+
+  <!-- google fonts link -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Ubuntu&display=swap"
+    rel="stylesheet">
+
+  <!-- bootstrap scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container-fluid top row">
+    <h1 class="col-lg-6 col-md-6 col-sm-6">
+      <%= questions[0].testName%>
+    </h1>
+    <h1 id="timeRemaining" class="col-lg-6 col-md-6 col-sm-6 alignRight">Time Left: 00:00:00</h1>
+  </div>
+
+  <div class="question-container mx-auto">
+
+    <h2 id="questionNumber">Question 1</h2>
+
+    <h3 id="question">
+      <%= questions[0].question%>
+    </h3>
+    <div class="container-fluid options-container">
+      <div class="row">
+        <div class="col-lg-6">
+          <button id="optionA" class="btn btn-outline-dark btn-lg btn-block" type="radio" name="button">
+            <%= questions[0].optionA%>
+          </button>
+        </div>
+        <div class="col-lg-6">
+          <button id="optionB" class="btn btn-outline-dark btn-lg btn-block" type="radio" name="button">
+            <%= questions[0].optionB%>
+          </button>
+        </div>
+      </div>
+      <div class="row option-row">
+        <div class="col-lg-6">
+          <button id="optionC" class="btn btn-outline-dark btn-lg btn-block" type="radio" name="button">
+            <%= questions[0].optionC%>
+          </button>
+        </div>
+        <div class="col-lg-6">
+          <button id="optionD" class="btn btn-outline-dark btn-lg btn-block" type="radio" name="button">
+            <%= questions[0].optionD%>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <button id="prev" class="col-lg-3 col-md-6 col-sm-6 btn btn-primary btn-lg" type="radio"
+          name="button">Prev</button>
+        <button id="next" class="col-lg-3 col-md-6 col-sm-6 btn btn-primary btn-lg" type="radio"
+          name="button">Next</button>
+        <button id="save" class="col-lg-3 btn btn-primary btn-lg" type="radio" name="button">Save</button>
+        <button id="end" class="col-lg-3 btn btn-danger btn-lg" type="radio" name="button">End Test</button>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">Copyright &copy; Exam Portal 2020-21 | All rights reserved</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../static/js/test.js" charset="utf-8"></script>
+
+  <script>
+    let testDuration = <%-testDuration %>;
+    showTimeRemaining(testDuration)
+    function showTimeRemaining(testDuration){
+      setInterval(function(){
+        
+        let hour = Math.floor(testDuration/3600000) 
+        let minutes = Math.floor((testDuration - hour*3600000)/60000) 
+        let seconds = Math.floor((testDuration - hour*3600000 - minutes*60000)/1000)
+        if(hour==0 && minutes==0 && seconds==0){
+          end()
+        }
+        console.log(hour+':'+minutes+':'+seconds)
+        document.getElementById('timeRemaining').innerText = `Time left : ${hour}:${minutes}:${seconds}`
+        testDuration -= 1000;
+      },1000)
+    }
+
+
+    let allQuestions = [<%- questions %>]
+    let questions
+    if (allQuestions.length > 10) {
+      questions = allQuestions.slice(1, 11)
+    }
+    else {
+      questions = allQuestions
+    }
+    let index = 0;
+    function showQuestion(index) {
+      document.getElementById("questionNumber").innerText = `Question ${index + 1}`;
+      document.getElementById("question").innerText = questions[index].question;
+      document.getElementById("optionA").innerText = questions[index].optionA;
+      document.getElementById("optionB").innerText = questions[index].optionB;
+      document.getElementById("optionC").innerText = questions[index].optionC;
+      document.getElementById("optionD").innerText = questions[index].optionD;
+    }
+    // next button
+    document.getElementById('next').addEventListener('click', () => {
+      if (index < questions.length - 1) {
+        index++;
+        showQuestion(index);
+      }
+    })
+    // prev button
+    document.getElementById('prev').addEventListener('click', () => {
+      if (index > 0) {
+        index--;
+        showQuestion(index);
+      }
+    })
+    // save button
+    let savedAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    document.getElementById('save').addEventListener('click', () => {
+      savedAnswers[index] = document.getElementsByClassName('btn-warning')[0].id.slice(-1);
+      if (index < questions.length - 1) {
+        index++;
+        showQuestion(index);
+      }
+    })
+    // end test
+    function end(){
+      let marks = 0;
+      for (let index = 0; index < questions.length; index++) {
+        if (questions[index].correctOption == savedAnswers[index]) {
+          marks++;
+        }
+      }
+      let data = {
+        studentId: sessionStorage.getItem("studentId"),
+        testName: "<%- testName%>",
+        department: sessionStorage.getItem("department"),
+        marks: marks
+      }
+      fetch("http://127.0.0.1:80/updateMarks", {
+        method: 'POST',
+        headers: { "Content-type": "application/json;charset=UTF-8" },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.text)
+        .then(text => text)
+        .catch(err => console.log(err))
+
+      history.back();
+    }
+    document.getElementById('end').addEventListener('click', end)
+  </script>
+</body>
+
+</html>

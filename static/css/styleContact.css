@@ -1,0 +1,68 @@
+#navbar{
+    background-color: #194350;
+    position: fixed;
+    z-index: 1;
+  }
+  
+  .navbar-dark .navbar-brand {
+    color: #ffc2b4;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    color: #ffc2b4;
+  }
+  
+  
+  .navbar-brand{
+    font-family: 'Ubuntu';
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-item{
+    padding: 0 18px;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #194350;
+}
+
+#heading{
+  font-size: 40px;
+  text-align: center;
+  padding-top: 60px;
+  font-weight: bold;
+}
+.myInput, .myTextarea{
+    width: 50%;
+    margin: 10px auto;
+    border: 0.5px solid;
+    border-radius: 8px;
+    height: 40px;
+    padding: 10px;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.mySelect{
+  width: 50%;
+  margin: 10px auto;
+  border: 0.5px solid;
+  border-radius: 8px;
+}
+.myTextarea{
+    height: 150px;
+}
+
+.myButton {
+    /* border: 2px solid black;
+    height: 35px; */
+    border-radius: 8px;
+    /* width: 85px;
+    padding: 2px 2px; */ 
+    background:  #194350;
+    font-weight: bold;
+    color: #ffc2b4;
+    font-size: 18px;
+}

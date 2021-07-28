@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* #navbar{
+    background-color: #194350;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+li{
+    margin: 9px 26px;
+    padding: 2px 12px;
+    list-style: none;
+    font-weight: bold;
+    font-size: 23px;
+}
+li a{
+    text-decoration: none;
+    color: #ffc2b4;
+}
+li a:hover{
+    text-decoration: none;
+    color: #ffc2b4;
+} */
+
+#navbar{
+    background-color: #194350;
+    position: fixed;
+    z-index: 1;
+  }
+  
+  .navbar-dark .navbar-brand {
+    color: #ffc2b4;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    color: #ffc2b4;
+  }
+  
+  
+  .navbar-brand{
+    font-family: 'Ubuntu';
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-item{
+    padding: 0 18px;
+  }
+.btn-primary {
+    color: #000;
+    background-color: #ffc2b4;
+    border-color: #ffc2b4;
+}
+  
+.btn-primary:hover {
+color: #000;
+background-color: #ff8882;
+border-color: #ff8882;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+color: #000;
+background-color: #ff8882;
+border-color: #ff8882;
+box-shadow: 0 0 0 0.2rem #ff8882;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+color: #000;
+background-color: #ffc2b4;
+border-color: #ffc2b4;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+color: #000;
+background-color: #ff8882;
+border-color: #ff8882;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+box-shadow: 0 0 0 0.2rem #ff8882;
+}
+
+
+.studentPage{
+    position: absolute;
+    margin-top: 80px;
+    width: 100%;
+}
+.testSection{
+    width: 70%;
+    border: 0.1px solid rgb(206, 206, 206);
+    border-radius: 10px;
+    margin: 40px;
+    padding: 15px 12px;
+}
+
+.info{
+    position: fixed;
+    right: 0;
+    width: 340px;
+    /* align-items: center; */
+    text-align: center;
+    /* margin: 14% 0; */
+    margin-top: 8%;
+}
+.myBtn{
+    padding: 15px 0;
+}
+#alert{
+    position: relative;
+    top: 60px;
+}
+#footer{
+    text-align: center;
+    padding-bottom: 10px;
+}
