@@ -28,6 +28,9 @@
     integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
     crossorigin="anonymous"></script>
 
+
+    <script defer src="../static/js/face-api.min.js"></script>
+    <script defer src="../static/js/face.js"></script>
 </head>
 
 <body>
@@ -37,6 +40,8 @@
     </h1>
     <h1 id="timeRemaining" class="col-lg-6 col-md-6 col-sm-6 alignRight">Time Left: 00:00:00</h1>
   </div>
+
+  <div id="warning"></div>
 
   <div class="question-container mx-auto">
 
@@ -82,10 +87,12 @@
       </div>
     </div>
   </div>
-  <footer id="footer">Copyright &copy; Exam Portal 2020-21 | All rights reserved</footer>
+  <footer id="footer">Copyright &copy; Exam Portal 2021 | TY 81 | All rights reserved</footer>
+  <video id="video" width="192" height="144" autoplay muted></video>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../static/js/test.js" charset="utf-8"></script>
+
 
   <script>
     let testDuration = <%-testDuration %>;
@@ -99,7 +106,7 @@
         if(hour==0 && minutes==0 && seconds==0){
           end()
         }
-        console.log(hour+':'+minutes+':'+seconds)
+        // console.log(hour+':'+minutes+':'+seconds)
         document.getElementById('timeRemaining').innerText = `Time left : ${hour}:${minutes}:${seconds}`
         testDuration -= 1000;
       },1000)
@@ -146,6 +153,8 @@
         showQuestion(index);
       }
     })
+    
+    function nothing(){console.log("in nothing")}
     // end test
     function end(){
       let marks = 0;
@@ -160,12 +169,12 @@
         department: sessionStorage.getItem("department"),
         marks: marks
       }
-      fetch("http://127.0.0.1:80/updateMarks", {
+      fetch("http://127.80.0.1:80/updateMarks", {
         method: 'POST',
         headers: { "Content-type": "application/json;charset=UTF-8" },
         body: JSON.stringify(data)
       })
-        .then(response => response.text)
+        .then(response => {console.log("done");return response.text;})
         .then(text => text)
         .catch(err => console.log(err))
 

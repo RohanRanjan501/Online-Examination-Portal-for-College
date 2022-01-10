@@ -43,7 +43,8 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><%= test.testName%></h5>
                                         <p class="card-text">
-                                            <%= test.dateTime.toString().slice(0,28) %>
+                                            <%= new Date(test.dateTime).toString().slice(0,28) %>
+                                            <br>
                                             Duration : <%= test.testDuration %> min
                                         </p>
                                         <a id=<%= index%> onclick="return checkTest('<%= test.dateTime%>', '<%=test.testDuration%>')" href="/test?testName=<%=test.testName%>&department=<%=test.department%>&dateTime=<%=test.dateTime%>&testDuration=<%=((test.dateTime)-((new Date())-test.testDuration*60000))%>" class="startBtn btn btn-primary">Start test</a>
@@ -96,7 +97,7 @@
                 <a href="./" id="logoutBtn" class="btn btn-primary">LOGOUT</a>
             </div>
         </div>
-        <footer id="footer">Copyright &copy; Exam Portal 2020-21 | All rights reserved</footer>
+        <footer id="footer">Copyright &copy; Exam Portal 2021 | TY 81 | All rights reserved</footer>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
